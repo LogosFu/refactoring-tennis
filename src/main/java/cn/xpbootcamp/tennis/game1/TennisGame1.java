@@ -29,30 +29,22 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreDefaultRule() {
-        int tempScore;
-        StringBuilder score = new StringBuilder();
-        for (int i = 1; i < 3; i++) {
-            if (i == 1) tempScore = playerOneScore;
-            else {
-                score.append("-");
-                tempScore = playerTwoScore;
-            }
-            switch (tempScore) {
-                case 0:
-                    score.append("Love");
-                    break;
-                case 1:
-                    score.append("Fifteen");
-                    break;
-                case 2:
-                    score.append("Thirty");
-                    break;
-                case 3:
-                    score.append("Forty");
-                    break;
-            }
+        return getScoreOutPut(playerOneScore)
+            + "-"
+            + getScoreOutPut(playerTwoScore);
+    }
+
+    private String getScoreOutPut(int tempScore) {
+        switch (tempScore) {
+            case 0:
+                return "Love";
+            case 1:
+                return "Fifteen";
+            case 2:
+                return "Thirty";
+            default:
+                return "Forty";
         }
-        return score.toString();
     }
 
     private String getScoreWhenWinFourFirst() {
@@ -69,21 +61,15 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenTwoPlayerEqual() {
-        StringBuilder score = new StringBuilder();
         switch (playerOneScore) {
             case 0:
-                score = new StringBuilder("Love-All");
-                break;
+                return "Love-All";
             case 1:
-                score = new StringBuilder("Fifteen-All");
-                break;
+                return "Fifteen-All";
             case 2:
-                score = new StringBuilder("Thirty-All");
-                break;
+                return "Thirty-All";
             default:
-                score = new StringBuilder("Deuce");
-                break;
+                return "Deuce";
         }
-        return score.toString();
     }
 }
