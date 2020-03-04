@@ -34,14 +34,15 @@ public class TennisGame1 implements TennisGame {
                 default:
                     score = new StringBuilder("Deuce");
                     break;
-
             }
+            return score.toString();
         } else if (M_SCORE1 >= 4 || M_SCORE2 >= 4) {
             int minusResult = M_SCORE1 - M_SCORE2;
             if (minusResult == 1) score = new StringBuilder("Advantage player1");
             else if (minusResult == -1) score = new StringBuilder("Advantage player2");
             else if (minusResult >= 2) score = new StringBuilder("Win for player1");
             else score = new StringBuilder("Win for player2");
+            return score.toString();
         } else {
             for (int i = 1; i < 3; i++) {
                 if (i == 1) tempScore = M_SCORE1;
@@ -64,7 +65,7 @@ public class TennisGame1 implements TennisGame {
                         break;
                 }
             }
+            return score.toString();
         }
-        return score.toString();
     }
 }
