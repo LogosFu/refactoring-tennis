@@ -56,13 +56,16 @@ public class TennisGame1 implements TennisGame {
     }
 
     private String getScoreWhenWinFourFirst() {
-        StringBuilder score = new StringBuilder();
         int minusResult = playerOneScore - playerTwoScore;
-        if (minusResult == 1) score = new StringBuilder("Advantage player1");
-        else if (minusResult == -1) score = new StringBuilder("Advantage player2");
-        else if (minusResult >= 2) score = new StringBuilder("Win for player1");
-        else score = new StringBuilder("Win for player2");
-        return score.toString();
+        if (minusResult == 1) {
+            return "Advantage player1";
+        } else if (minusResult == -1) {
+            return "Advantage player2";
+        } else if (minusResult >= 2) {
+            return "Win for player1";
+        } else {
+            return "Win for player2";
+        }
     }
 
     private String getScoreWhenTwoPlayerEqual() {
