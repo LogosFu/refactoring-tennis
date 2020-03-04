@@ -16,10 +16,9 @@ public class TennisGame2 implements TennisGame {
 
     String score = "";
     if (isPointSame()) {
-      return getScoreWhenPointSame(score);
+      return getScoreWhenPointSame();
     }
     if (isPlayOneGreateThanTwo()) {
-
       return getScoreForPlayOneLeading(score, this.playOnePoint, this.playTwoPoint);
     }
 
@@ -112,7 +111,8 @@ public class TennisGame2 implements TennisGame {
     return playOnePoint > playTwoPoint;
   }
 
-  private String getScoreWhenPointSame(String score) {
+  private String getScoreWhenPointSame() {
+    String score = "";
     if (playOnePoint < 4) {
       if (playOnePoint == 0) {
         score = "Love";
