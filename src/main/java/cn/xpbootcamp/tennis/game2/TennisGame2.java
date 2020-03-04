@@ -7,30 +7,22 @@ public class TennisGame2 implements TennisGame {
     private int playOnePoint = 0;
     private int playTwoPoint = 0;
 
-    public String P1res = "";
-    public String P2res = "";
-
     public TennisGame2() {
     }
 
     public String getScore() {
+        String P1res = "";
+        String P2res = "";
         String score = "";
         if (isPointSame()) {
             score = getScoreWhenPointSame(score);
         }
+        final int playOnePoint = this.playOnePoint;
+        final int playTwoPoint = this.playTwoPoint;
         if (isPlayOneGreateThanTwo()) {
 
             if (playTwoPoint == 0) {
-                if (playOnePoint == 1) {
-                    P1res = "Fifteen";
-                }
-                if (playOnePoint == 2) {
-                    P1res = "Thirty";
-                }
-                if (playOnePoint == 3) {
-                    P1res = "Forty";
-                }
-
+                P1res = getScoreByPointWhenOtherIsZero(playOnePoint);
                 P2res = "Love";
                 score = P1res + "-" + P2res;
             }
@@ -57,16 +49,7 @@ public class TennisGame2 implements TennisGame {
             }
         }
         if (playTwoPoint > 0 && playOnePoint == 0) {
-            if (playTwoPoint == 1) {
-                P2res = "Fifteen";
-            }
-            if (playTwoPoint == 2) {
-                P2res = "Thirty";
-            }
-            if (playTwoPoint == 3) {
-                P2res = "Forty";
-            }
-
+            P2res = getScoreByPointWhenOtherIsZero(playTwoPoint);
             P1res = "Love";
             score = P1res + "-" + P2res;
         }
@@ -95,6 +78,19 @@ public class TennisGame2 implements TennisGame {
             score = "Win for player2";
         }
         return score;
+    }
+
+    private String getScoreByPointWhenOtherIsZero(int playOnePoint) {
+        if (playOnePoint == 1) {
+            return "Fifteen";
+        }
+        if (playOnePoint == 2) {
+            return "Thirty";
+        }
+        if (playOnePoint == 3) {
+            return "Forty";
+        }
+        return null;
     }
 
     private boolean isPlayOneGreateThanTwo() {
